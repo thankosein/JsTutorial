@@ -1,3 +1,5 @@
+DOM (Document Object Model)
+
 Here’s a structured JavaScript DOM (Document Object Model) course outline you can follow to study progressively — starting from the basics and moving to advanced topics with practical projects along the way.
 
 ---
