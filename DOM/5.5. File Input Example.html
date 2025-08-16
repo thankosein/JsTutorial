@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>File Input Example</title>
+  <style>
+    img.preview {
+      max-width: 150px;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<h2>File Input Example</h2>
+
+<form id="fileForm">
+  <label>
+    Select Images (JPG/PNG):
+    <input type="file" id="imageInput" accept=".jpg,.png,image/*" multiple required>
+  </label>
+  <br><br>
+  <button type="submit">Submit</button>
+</form>
+
+<div id="previewContainer"></div>
+
+<script>
+const form = document.getElementById("fileForm");
+const fileInput = document.getElementById("imageInput");
+const previewContainer = document.getElementById("previewContainer");
+
+// Preview selected images
+fileInput.addEventListener("change", () => {
+  previewContainer.innerHTML = ""; // Clear previous previews
+
+  const files = fileInput.files;
+  if (files.length === 0) return;
+
+  Array.from(files).forEach(file => {
+    if (!file.type.startsWith("image/")) return; // skip non-images
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const img = document.createElement("img");
+      img.src = e.target.result;
+      img.classList.add("preview");
+      previewContainer.appendChild(img);
+    };
+    reader.readAsDataURL(file);
+  });
+});
+
+// Handle form submission
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const files = fileInput.files;
+  if (files.length === 0) {
+    alert("❌ Please select at least one file.");
+    return;
+  }
+
+  const fileNames = Array.from(files).map(f => f.name);
+  alert(`✅ Selected files:\n${fileNames.join("\n")}`);
+});
+</script>
+
+</body>
+</html>

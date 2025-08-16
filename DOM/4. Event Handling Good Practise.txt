@@ -1,0 +1,132 @@
+Absolutely! Let’s go through each of these **best practices** for event handling in detail, with explanations and examples.
+
+---
+
+### **1. Use `addEventListener` instead of inline JS**
+
+**What it means:**
+Instead of writing HTML like this:
+
+```html
+<button onclick="alert('Clicked!')">Click Me</button>
+```
+
+Use JavaScript to attach the event:
+
+```javascript
+const btn = document.getElementById("myBtn");
+btn.addEventListener("click", () => {
+  alert("Clicked!");
+});
+```
+
+**Why it’s better:**
+
+* Keeps HTML **clean and semantic** (separates content from behavior).
+* Allows attaching **multiple listeners** for the same event on one element.
+* Easier to **maintain and debug** in larger projects.
+
+---
+
+### **2. Use named functions if you might remove the listener later**
+
+**Example with a named function:**
+
+```javascript
+function handleClick() {
+  alert("Clicked!");
+}
+
+btn.addEventListener("click", handleClick);
+
+// Later remove the listener
+btn.removeEventListener("click", handleClick);
+```
+
+**Important:**
+
+* You **cannot remove an anonymous function**:
+
+```javascript
+btn.addEventListener("click", () => { alert("Clicked!"); });
+// btn.removeEventListener("click", ???) ❌ impossible
+```
+
+**Why:**
+`removeEventListener` needs the **exact same function reference** that was added. Named functions make this possible.
+
+---
+
+### **3. Consider event delegation for dynamic elements**
+
+**What it is:**
+Instead of attaching listeners to each child element individually, attach **one listener to a parent**, and detect which child triggered the event.
+
+**Example:**
+
+```javascript
+const list = document.getElementById("fruits");
+
+list.addEventListener("click", (e) => {
+  if(e.target.tagName === "LI") {
+    alert("Clicked: " + e.target.textContent);
+  }
+});
+```
+
+**Benefits:**
+
+* Works for **existing and dynamically added elements**.
+* More **memory-efficient** because you don’t create a listener for every child.
+* Keeps code **simpler** for large lists, tables, or menus.
+
+---
+
+### **4. Always inspect the `event` object**
+
+**What it is:**
+When an event occurs, the listener receives an **event object** containing useful info:
+
+```javascript
+btn.addEventListener("click", (event) => {
+  console.log(event); // full MouseEvent or KeyboardEvent object
+  console.log(event.target); // the element that triggered the event
+  console.log(event.type);   // event type, e.g., "click"
+});
+```
+
+**Why it’s important:**
+
+* Helps you **know which element triggered the event**.
+* Lets you **prevent default behavior** if needed:
+
+```javascript
+const link = document.querySelector("a");
+link.addEventListener("click", (e) => {
+  e.preventDefault(); // stop navigation
+  alert("Link clicked!");
+});
+```
+
+* Can **stop event propagation** to parent elements:
+
+```javascript
+e.stopPropagation(); // stops event from bubbling up
+```
+
+---
+
+### **Summary**
+
+| Best Practice          | Reason                                                          |
+| ---------------------- | --------------------------------------------------------------- |
+| `addEventListener`     | Keeps HTML clean, allows multiple listeners, easier maintenance |
+| Named functions        | Can remove listeners later, avoids anonymous function issues    |
+| Event delegation       | Efficient, works for dynamic elements, reduces memory usage     |
+| Inspect `event` object | Understand source element, prevent default, control propagation |
+
+---
+
+If you want, I can make a **visual example page** showing all **these best practices together**, so you can **experiment with add/remove listeners, delegation, and event object inspection** interactively.
+
+Do you want me to make that demo?

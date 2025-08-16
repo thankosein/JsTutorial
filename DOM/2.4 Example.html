@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DOM Selection Example</title>
+</head>
+<body>
+  <h1 id="page-title">Fruit List</h1>
+
+  <ul id="fruits">
+    <li class="item">Apple</li>
+    <li class="item">Banana</li>
+    <li class="item">Cherry</li>
+  </ul>
+  <br>
+  <p>
+    Best Practices Applied
+
+    Use const for DOM elements
+    Elements don’t change references — constants make intent clear.
+
+    Prefer querySelector / querySelectorAll
+    Flexible and supports complex CSS selectors.
+
+    Cache selectors
+    Don’t repeatedly query the DOM for the same element — it’s slow.
+
+    Use textContent instead of innerHTML
+
+    Safer (avoids XSS injection risks)
+
+    Faster (no HTML parsing unless needed)
+
+    Use forEach on NodeLists
+    More readable and modern compared to traditional loops.
+
+    Make changes in batches
+    If adding multiple elements, consider DocumentFragment to reduce reflows.
+  </p>
+  <script src="2.4_script.js"></script>
+</body>
+</html>

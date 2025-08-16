@@ -1,0 +1,60 @@
+Alright — let’s go deep into **File Inputs** (`<input type="file">`).
+
+---
+
+## **What is a File Input?**
+
+* It lets users **upload files** from their device (PC, mobile, etc.).
+* The browser shows a **file picker dialog** when the user clicks the field.
+* It can accept **one** or **multiple** files.
+* It can **filter allowed file types** (images, PDFs, Excel, etc.).
+* Once a file is selected, you can:
+
+  * Read it in JavaScript (for previews).
+  * Send it to the server for storage or processing.
+
+---
+
+## **Key Attributes**
+
+| Attribute  | Purpose                                               | Example                                                        |
+| ---------- | ----------------------------------------------------- | -------------------------------------------------------------- |
+| `multiple` | Allows selecting more than one file                   | `<input type="file" multiple>`                                 |
+| `accept`   | Restricts file types                                  | `<input type="file" accept=".jpg,.png">` or `accept="image/*"` |
+| `required` | Makes file selection mandatory before form submission | `<input type="file" required>`                                 |
+
+---
+
+## **When to Use**
+
+* Profile picture uploads.
+* Document submission (CV, ID card).
+* Image galleries.
+* Audio/video uploads.
+* CSV/Excel data imports.
+
+---
+
+## **Important Notes**
+
+1. **Security**:
+
+   * You **cannot** set a file input’s value in JavaScript for security reasons — the user must manually select a file.
+   * Browsers prevent access to file paths for privacy; you only get the file name and content if you read it.
+
+2. **Form Submission**:
+
+   * To upload files to the server, your `<form>` **must** use:
+
+     ```html
+     <form enctype="multipart/form-data" method="POST">
+     ```
+
+3. **Reading Files in JavaScript**:
+
+   * Use the **File API** and `FileReader` to preview or process files before upload.
+
+---
+
+If you want, I can now show you a **practical example** where a file input previews an image before uploading — that’s the most common real-world case.
+Do you want me to go ahead with that example?

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Changing Styles Example</title>
+  <style>
+    .highlight {
+      color: white;
+      background-color: crimson;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+    .large {
+      font-size: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="page-title">Hello DOM Styling</h1>
+
+  <button id="btn-inline">Change Inline Style</button>
+  <button id="btn-add-class">Add CSS Class</button>
+  <button id="btn-remove-class">Remove CSS Class</button>
+  <button id="btn-toggle-class">Toggle CSS Class</button>
+
+  <script>
+    const title = document.getElementById("page-title");
+
+    // 1. Change inline style
+    document.getElementById("btn-inline").addEventListener("click", () => {
+      title.style.color = "blue";
+      title.style.backgroundColor = "lightyellow";
+      title.style.fontSize = "24px";
+    });
+
+    // 2. Add a CSS class
+    document.getElementById("btn-add-class").addEventListener("click", () => {
+      title.classList.add("highlight");
+    });
+
+    // 3. Remove a CSS class
+    document.getElementById("btn-remove-class").addEventListener("click", () => {
+      title.classList.remove("highlight");
+    });
+
+    // 4. Toggle a CSS class
+    document.getElementById("btn-toggle-class").addEventListener("click", () => {
+      title.classList.toggle("large");
+    });
+  </script>
+</body>
+</html>
+
+
+<!-- ### **HTML (changing-styles.html)**
+
+
+---
+
+### **What This Demonstrates**
+
+1. **Inline styles**
+
+   ```javascript
+   title.style.color = "blue";
+   ```
+
+   ✅ Quick for one-off changes, but not ideal for maintainability.
+
+2. **Class manipulation (`classList`)**
+
+   * `.add()` → Adds a class
+   * `.remove()` → Removes a class
+   * `.toggle()` → Adds if missing, removes if present
+
+3. **Why prefer classes?**
+
+   * Keeps styling in **CSS**, making it easier to maintain.
+   * Avoids cluttering JS with style rules.
+
+---
+
+If you run this:
+
+* **Change Inline Style** → Directly changes color, background, and size.
+* **Add CSS Class** → Applies `highlight` styling from CSS.
+* **Remove CSS Class** → Removes the highlight style.
+* **Toggle CSS Class** → Switches `large` text on/off.
+
+---
+
+If you want, I can extend this into a **live color picker** example, so you can select a color from an `<input type="color">` and instantly update the element’s style.
+That would be a great **practical DOM style manipulation exercise**.
+
+Do you want me to make that next? -->

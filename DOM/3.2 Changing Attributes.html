@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Changing Attributes Example</title>
+</head>
+<body>
+  <h1>Fruit Image</h1>
+
+  <!-- Image with alt and width attributes -->
+  <img id="fruit-img" src="https://www.nutritionalbenefits.co.uk/wp-content/uploads/2014/11/Fruit-Blog.jpg" alt="Placeholder Image" width="150">
+
+  <br><br>
+
+  <!-- Buttons for actions -->
+  <button id="btn-change-src">Change Image (setAttribute)</button>
+  <button id="btn-change-alt">Change Alt Text</button>
+  <button id="btn-remove-alt">Remove Alt Attribute</button>
+  <button id="btn-direct-src">Change Image (direct property)</button>
+
+  <script>
+    // Cache element
+    const img = document.getElementById("fruit-img");
+
+    // 1. Change src using setAttribute()
+    document.getElementById("btn-change-src").addEventListener("click", () => {
+      img.setAttribute("src", "https://tse3.mm.bing.net/th/id/OIP.NOWxHJIvWPsqcEAjCunUQAAAAA?rs=1&pid=ImgDetMain&o=7&rm=3");
+    });
+
+    // 2. Change alt text
+    document.getElementById("btn-change-alt").addEventListener("click", () => {
+      img.setAttribute("alt", "Red Apple Image");
+      alert("Alt text changed to: " + img.getAttribute("alt"));
+    });
+
+    // 3. Remove alt attribute
+    document.getElementById("btn-remove-alt").addEventListener("click", () => {
+      img.removeAttribute("alt");
+      alert("Alt attribute removed.");
+    });
+
+    // 4. Change src using direct property
+    document.getElementById("btn-direct-src").addEventListener("click", () => {
+      img.src = "https://tse3.mm.bing.net/th/id/OIP.rvk2zaMfazJJXgIZHdiumQAAAA?pid=ImgDet&w=290&h=290&rs=1&o=7&rm=3";
+    });
+  </script>
+</body>
+</html>
+<!-- How This Works
+
+setAttribute() — changes or adds an attribute by name.
+
+getAttribute() — reads the current value.
+
+removeAttribute() — deletes an attribute.
+
+Direct property assignment (img.src) — works for common attributes like src, href, id, value.
+
+If you open this in your browser:
+
+Click "Change Image (setAttribute)" → Image changes to a red apple placeholder.
+
+Click "Change Alt Text" → Updates alt and shows alert.
+
+Click "Remove Alt Attribute" → Removes the alt.
+
+Click "Change Image (direct property)" → Uses JS property to change the image to mango.
+
+If you want, I can also make a version with form input so you can type an image URL and instantly change the src attribute dynamically. That would be a good practical DOM exercise.
+
+Do you want me to prepare that next? -->

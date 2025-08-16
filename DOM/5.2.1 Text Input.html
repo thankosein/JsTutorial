@@ -1,0 +1,88 @@
+Alright — let’s start with **Text Inputs** in detail.
+
+---
+
+## **1. Text Inputs**
+
+A **text input** is the most common form element used to let users enter free-form text.
+
+### **HTML Example**
+
+```html
+<form id="myForm">
+  <label for="username">Username:</label>
+  <input type="text" id="username" name="username" placeholder="Enter your name">
+  <button type="submit">Submit</button>
+</form>
+```
+
+---
+
+### **Key Attributes**
+
+| Attribute     | Description                                        |
+| ------------- | -------------------------------------------------- |
+| `type="text"` | Standard single-line text field.                   |
+| `placeholder` | Gray hint text shown when input is empty.          |
+| `maxlength`   | Limits number of characters.                       |
+| `required`    | Makes the field mandatory before submission.       |
+| `readonly`    | Makes it uneditable but still visible.             |
+| `disabled`    | Grays it out and excludes it from form submission. |
+| `value`       | Pre-fills the input with text.                     |
+
+---
+
+### **JavaScript Access**
+
+```javascript
+const input = document.getElementById("username");
+
+// Get value (string)
+console.log(input.value);
+
+// Set value
+input.value = "John Doe";
+
+// Listen for typing
+input.addEventListener("input", (e) => {
+  console.log("User typed:", e.target.value);
+});
+```
+
+---
+
+### **Validation Example**
+
+```javascript
+document.getElementById("myForm").addEventListener("submit", (e) => {
+  e.preventDefault();
+  
+  const username = document.getElementById("username").value.trim();
+  
+  if (username === "") {
+    alert("Username is required!");
+    return;
+  }
+
+  if (username.length < 3) {
+    alert("Username must be at least 3 characters long.");
+    return;
+  }
+
+  alert(`Submitted: ${username}`);
+});
+```
+
+---
+
+### **Good Practices**
+
+* **Trim spaces** to prevent `" John "` from being accepted as valid input.
+* Use **`maxlength`** to prevent too much text.
+* Use **placeholder** only for hints, not as labels.
+* Add **real-time feedback** with the `input` event.
+
+---
+
+If you want, I can go next into **2. Password Inputs** so you can see the differences in behavior and handling.
+Do you want me to continue?

@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Removing Elements Example</title>
+  <style>
+    body { font-family: Arial, sans-serif; }
+    ul { list-style-type: none; padding: 0; }
+    li {
+      padding: 5px 10px;
+      background: #f4f4f4;
+      margin: 5px 0;
+      border-radius: 4px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    button.remove-btn {
+      background: red;
+      color: white;
+      border: none;
+      padding: 2px 6px;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Fruit List</h1>
+
+  <ul id="fruits">
+    <li>Apple <button class="remove-btn">Remove</button></li>
+    <li>Banana <button class="remove-btn">Remove</button></li>
+  </ul>
+
+  <input type="text" id="fruit-input" placeholder="Enter a fruit name" />
+  <button id="add-fruit">Add Fruit</button>
+
+  <script>
+    const fruitsList = document.getElementById("fruits");
+    const fruitInput = document.getElementById("fruit-input");
+    const addButton = document.getElementById("add-fruit");
+
+    // Event delegation: remove any li when its remove button is clicked
+    fruitsList.addEventListener("click", (e) => {
+      if (e.target.classList.contains("remove-btn")) {
+        e.target.parentElement.remove(); // Remove the <li>
+      }
+    });
+
+    // Function to create a new li with remove button
+    function createFruitItem(name) {
+      const li = document.createElement("li");
+      li.textContent = name + " ";
+
+      const removeBtn = document.createElement("button");
+      removeBtn.textContent = "Remove";
+      removeBtn.classList.add("remove-btn");
+
+      li.appendChild(removeBtn);
+      return li;
+    }
+
+    // Add new fruit
+    addButton.addEventListener("click", () => {
+      const fruitName = fruitInput.value.trim();
+      if (fruitName === "") {
+        alert("Please enter a fruit name.");
+        return;
+      }
+
+      const newFruit = createFruitItem(fruitName);
+      fruitsList.appendChild(newFruit);
+
+      fruitInput.value = "";
+      fruitInput.focus();
+    });
+  </script>
+</body>
+</html>

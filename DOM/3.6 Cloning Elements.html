@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cloning Elements Example</title>
+  <style>
+    body { font-family: Arial, sans-serif; }
+    ul { list-style-type: none; padding: 0; }
+    li {
+      padding: 5px 10px;
+      background: #f4f4f4;
+      margin: 5px 0;
+      border-radius: 4px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    button { margin-left: 5px; cursor: pointer; }
+    .remove-btn { background: red; color: white; border: none; padding: 2px 6px; border-radius: 3px; }
+    .clone-btn { background: green; color: white; border: none; padding: 2px 6px; border-radius: 3px; }
+  </style>
+</head>
+<body>
+  <h1>Fruit List</h1>
+
+  <ul id="fruits">
+    <li>
+      Apple 
+      <button class="remove-btn">Remove</button>
+      <button class="clone-btn">Clone</button>
+    </li>
+    <li>
+      Banana 
+      <button class="remove-btn">Remove</button>
+      <button class="clone-btn">Clone</button>
+    </li>
+  </ul>
+
+  <script>
+    const fruitsList = document.getElementById("fruits");
+
+    // Event delegation for remove and clone buttons
+    fruitsList.addEventListener("click", (e) => {
+      const li = e.target.parentElement;
+
+      // Remove button
+      if (e.target.classList.contains("remove-btn")) {
+        li.remove();
+      }
+
+      // Clone button
+      if (e.target.classList.contains("clone-btn")) {
+        const clone = li.cloneNode(true); // true = deep clone (includes children)
+        fruitsList.appendChild(clone);
+      }
+    });
+  </script>
+</body>
+</html>

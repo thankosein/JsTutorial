@@ -1,0 +1,154 @@
+3. Manipulating Elements
+
+Once you select an element (Step 2), you can change it — text, HTML, styles, attributes, or even add/remove elements.
+
+---------------------
+
+3.1 Changing Text
+
+* `textContent` → Text only (faster, safer, no HTML parsing)
+* `innerText` → Text as it’s rendered (slower, considers CSS like `display: none`)
+* `innerHTML` → HTML content (use with caution due to XSS risks)
+
+```javascript
+const title = document.querySelector("#page-title");
+
+title.textContent = "New Title";     // ✅ Safe
+title.innerText = "Visible Title";   // ✅ Considers styling
+title.innerHTML = "<em>Italic Title</em>"; // ⚠ Can insert HTML
+```
+
+---------------------
+
+3.2 Changing Attributes
+
+* `getAttribute()`, `setAttribute()`, `removeAttribute()`
+* Direct property assignment for common attributes (like `.src`, `.href`)
+
+```javascript
+const img = document.querySelector("img");
+
+img.setAttribute("alt", "A fruit image");
+console.log(img.getAttribute("alt")); // "A fruit image"
+
+img.src = "apple.jpg"; // Shortcut for setAttribute("src", "apple.jpg")
+
+img.removeAttribute("alt");
+```
+
+---------------------
+
+3.3 Changing Styles
+
+* Inline styles: `element.style.property`
+* CSS classes: `classList.add()`, `classList.remove()`, `classList.toggle()`
+
+```javascript
+const title = document.querySelector("#page-title");
+
+// Inline styles
+title.style.color = "red";
+title.style.fontSize = "24px";
+
+// Class manipulation
+title.classList.add("highlight");
+title.classList.remove("highlight");
+title.classList.toggle("highlight"); // Adds if missing, removes if present
+```
+
+---------------------
+
+3.4 Creating New Elements
+
+```javascript
+const newFruit = document.createElement("li");
+newFruit.textContent = "Mango";
+newFruit.classList.add("item");
+
+document.querySelector("#fruits").appendChild(newFruit);
+```
+
+Best practice: Use `DocumentFragment` when adding many elements to reduce reflows.
+
+---------------------
+
+3.5 Removing Elements
+
+```javascript
+const list = document.querySelector("#fruits");
+const firstItem = list.querySelector("li");
+
+// Modern way
+firstItem.remove();
+
+// Old way
+list.removeChild(list.lastElementChild);
+```
+
+---------------------
+
+3.6 Cloning Elements
+
+```javascript
+const firstItem = document.querySelector(".item");
+const clone = firstItem.cloneNode(true); // true = deep clone (with children)
+clone.textContent = "Cloned Apple";
+document.querySelector("#fruits").appendChild(clone);
+```
+
+---------------------
+
+3.7 Example (Best Practice)
+
+HTML:
+
+```html
+<ul id="fruits">
+  <li class="item">Apple</li>
+  <li class="item">Banana</li>
+</ul>
+```
+
+JavaScript:
+
+```javascript
+const fruitsList = document.querySelector("#fruits");
+
+// Change Banana to Orange
+fruitsList.children[1].textContent = "Orange";
+
+// Add Mango
+const mango = document.createElement("li");
+mango.textContent = "Mango";
+mango.classList.add("item");
+fruitsList.appendChild(mango);
+
+// Style Mango
+mango.style.color = "green";
+
+// Remove Apple
+fruitsList.firstElementChild.remove();
+```
+
+---------------------
+
+Best Practices
+
+1. Use `textContent` instead of `innerHTML` unless you need to insert HTML.
+2. Cache your selectors to avoid repeated DOM queries.
+3. Batch DOM updates when possible to improve performance.
+4. Manipulate classes instead of inline styles for maintainability.
+5. Avoid hardcoding inline styles — prefer CSS classes.
+
+---------------------
+
+If you want, I can now make a hands-on HTML + JS file where you click buttons to:
+
+* Change text
+* Add fruit
+* Remove fruit
+* Toggle style
+
+That would let you practice all element manipulation methods interactively.
+
+Do you want me to prepare that?

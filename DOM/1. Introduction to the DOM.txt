@@ -1,0 +1,121 @@
+Alright — let’s start with **"Introduction to the DOM"** in a study-friendly way.
+
+---
+
+## **1. Introduction to the DOM**
+
+### **1.1 What is the DOM?**
+
+* **DOM** = **Document Object Model**
+* It’s a programming interface for HTML and XML documents.
+* It represents the page as a **tree of objects** so programming languages like **JavaScript** can read and modify it.
+* The browser automatically creates the DOM when it loads a web page.
+
+Think of it as:
+
+```
+HTML file  →  Browser parses →  DOM Tree in memory
+```
+
+Example HTML:
+
+```html
+<html>
+  <body>
+    <h1>Hello World</h1>
+    <p>This is a paragraph.</p>
+  </body>
+</html>
+```
+
+DOM Tree representation:
+
+```
+Document
+ └── html
+     ├── head
+     └── body
+         ├── h1
+         └── p
+```
+
+---
+
+### **1.2 Why is the DOM Important?**
+
+* It’s how JavaScript **interacts** with HTML and CSS.
+* Allows:
+
+  * Reading content
+  * Changing text/images
+  * Adding/removing elements
+  * Changing styles dynamically
+  * Listening to user actions (clicks, typing, scrolling, etc.)
+
+Example:
+
+```javascript
+document.querySelector('h1').textContent = "Hello from JavaScript!";
+```
+
+---
+
+### **1.3 DOM vs HTML**
+
+| HTML (Static)                            | DOM (Dynamic)                                          |
+| ---------------------------------------- | ------------------------------------------------------ |
+| Written by the developer in `.html` file | Created by the browser in memory                       |
+| Does not change unless file is edited    | Can be changed by JavaScript while the page is running |
+| Can’t handle events                      | Can handle events & respond                            |
+
+---
+
+### **1.4 DOM as a Tree Structure**
+
+* **Root**: `document`
+* **Nodes**: Elements, text, comments
+* Types of nodes:
+
+  * **Element Node** (e.g., `<p>`, `<div>`)
+  * **Text Node** (actual text content)
+  * **Attribute Node** (`id="main"`)
+  * **Comment Node** (`<!-- comment -->`)
+
+---
+
+### **1.5 The Document Object**
+
+The `document` object is your entry point to the DOM in JavaScript.
+Examples:
+
+```javascript
+document.title; // Get page title
+document.body; // Get the <body> element
+document.URL; // Get current page URL
+```
+
+---
+
+### **1.6 How JavaScript Sees the DOM**
+
+* You can open **Developer Tools → Console** and type:
+
+```javascript
+console.dir(document);
+```
+
+* This shows the full JavaScript object model of the page.
+
+---
+
+### **1.7 Summary**
+
+* The DOM is **not** HTML — it’s a **live in-memory object model** of your page.
+* JavaScript can use the DOM to change structure, styles, and content without reloading the page.
+* Every modern browser supports DOM manipulation.
+
+---
+
+If you want, I can give you a **set of small exercises** for DOM basics so you can start playing with it immediately in your browser console. That will make this topic “click” in your mind quickly.
+
+Do you want me to prepare those exercises next?

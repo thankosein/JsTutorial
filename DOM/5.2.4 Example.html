@@ -1,0 +1,56 @@
+<form id="dateTimeForm">
+  <!-- Date -->
+  <label>
+    Date (Event Day):
+    <input type="date" id="eventDate" required>
+  </label>
+  <br><br>
+
+  <!-- Time -->
+  <label>
+    Time (Event Start):
+    <input type="time" id="eventTime" required>
+  </label>
+  <br><br>
+
+  <!-- Date + Time -->
+  <label>
+    Date & Time (Meeting):
+    <input type="datetime-local" id="meetingDateTime">
+  </label>
+  <br><br>
+
+  <!-- Month -->
+  <label>
+    Month (Report Month):
+    <input type="month" id="reportMonth">
+  </label>
+  <br><br>
+
+  <!-- Week -->
+  <label>
+    Week (Schedule Week):
+    <input type="week" id="scheduleWeek">
+  </label>
+  <br><br>
+
+  <button type="submit">Submit</button>
+</form>
+
+<script>
+document.getElementById("dateTimeForm").addEventListener("submit", (e) => {
+  e.preventDefault(); // Stop form from reloading
+
+  const eventDate = document.getElementById("eventDate").value;       // e.g. "2025-08-15"
+  const eventTime = document.getElementById("eventTime").value;       // e.g. "14:30"
+  const meetingDateTime = document.getElementById("meetingDateTime").value; // e.g. "2025-08-15T14:30"
+  const reportMonth = document.getElementById("reportMonth").value;   // e.g. "2025-08"
+  const scheduleWeek = document.getElementById("scheduleWeek").value; // e.g. "2025-W33"
+
+  console.log("Event Date:", eventDate);
+  console.log("Event Time:", eventTime);
+  console.log("Meeting DateTime:", meetingDateTime);
+  console.log("Report Month:", reportMonth);
+  console.log("Schedule Week:", scheduleWeek);
+});
+</script>

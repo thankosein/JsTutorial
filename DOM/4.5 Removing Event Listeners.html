@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Removing Event Listeners Example</title>
+</head>
+<body>
+  <h1>Click Counter</h1>
+
+  <button id="btnClick">Click Me</button>
+  <button id="btnRemove">Stop Counting</button>
+  <p id="counterText">Button clicked 0 times</p>
+
+  <script>
+    const btnClick = document.getElementById("btnClick");
+    const btnRemove = document.getElementById("btnRemove");
+    const counterText = document.getElementById("counterText");
+
+    let count = 0;
+
+    // Named function for the click event
+    function handleClick() {
+      count++;
+      counterText.textContent = `Button clicked ${count} times`;
+    }
+
+    // Add the event listener
+    btnClick.addEventListener("click", handleClick);
+
+    // Remove the event listener when stop button is clicked
+    btnRemove.addEventListener("click", () => {
+      btnClick.removeEventListener("click", handleClick);
+      alert("Click counting stopped!");
+    });
+  </script>
+</body>
+</html>

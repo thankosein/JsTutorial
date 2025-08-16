@@ -1,0 +1,151 @@
+2. Accessing DOM Elements
+
+---
+
+## 2. Accessing DOM Elements
+
+When you want to read or change something on a webpage, you first need to find (select) it in the DOM.
+
+---
+
+ 2.1 Selection Methods
+
+ 1. `getElementById()`
+
+* Finds one element by its id (must be unique in the page).
+* Returns null if not found.
+
+html
+<h1 id="main-title">Hello</h1>
+
+
+javascript
+const title = document.getElementById("main-title");
+console.log(title.textContent); // "Hello"
+
+
+---
+
+ 2. `getElementsByClassName()`
+
+* Finds elements by class name.
+* Returns an HTMLCollection (looks like an array but is live and not all array methods work).
+
+html
+<p class="note">Note 1</p>
+<p class="note">Note 2</p>
+
+
+javascript
+const notes = document.getElementsByClassName("note");
+console.log(notes[0].textContent); // "Note 1"
+
+
+---
+
+ 3. `getElementsByTagName()`
+
+* Finds elements by their tag (`<p>`, `<div>`, etc.).
+* Also returns an HTMLCollection.
+
+javascript
+const paragraphs = document.getElementsByTagName("p");
+console.log(paragraphs.length);
+
+
+---
+
+ 4. `querySelector()`
+
+* Finds the first matching element using CSS selector syntax.
+* More powerful than `getElementById` or `getElementsByClassName`.
+
+javascript
+const firstNote = document.querySelector(".note");
+const header = document.querySelector("#main-title");
+const special = document.querySelector("div > p.note");
+
+
+---
+
+ 5. `querySelectorAll()`
+
+* Finds all matching elements using CSS selector syntax.
+* Returns a NodeList (supports `.forEach()`).
+
+javascript
+const allNotes = document.querySelectorAll(".note");
+allNotes.forEach(note => console.log(note.textContent));
+
+
+---
+
+ 2.2 HTMLCollection vs NodeList
+
+| Feature          | HTMLCollection                 | NodeList             |
+| ---------------- | ------------------------------ | -------------------- |
+| Returned by      | `getElementsBy...`             | `querySelectorAll()` |
+| Live update      | Yes (changes when DOM changes) | No (static snapshot) |
+| forEach() method | ❌ No                           | ✅ Yes                |
+
+---
+
+ 2.3 Traversing the DOM
+
+Once you have an element, you can move around the DOM tree.
+
+ Parent & Children
+
+javascript
+const list = document.querySelector("ul");
+console.log(list.parentElement); // parent node
+console.log(list.children); // HTMLCollection of child elements
+
+
+ Siblings
+
+javascript
+const item = document.querySelector("li");
+console.log(item.nextElementSibling);
+console.log(item.previousElementSibling);
+
+
+---
+
+ 2.4 Example
+
+HTML:
+
+html
+<ul id="fruits">
+  <li class="item">Apple</li>
+  <li class="item">Banana</li>
+  <li class="item">Cherry</li>
+</ul>
+
+
+JavaScript:
+
+javascript
+// Select single element
+const fruitsList = document.getElementById("fruits");
+console.log(fruitsList.tagName); // UL
+
+// Select multiple
+const fruitItems = document.querySelectorAll(".item");
+fruitItems.forEach(fruit => console.log(fruit.textContent));
+
+
+---
+
+ 2.5 Best Practices
+
+* Prefer `querySelector()` and `querySelectorAll()` for flexibility.
+* Avoid repeatedly querying the DOM — store elements in variables.
+* Use specific selectors to avoid accidentally selecting the wrong element.
+
+---
+
+If you want, I can prepare interactive practice tasks where you get a small HTML snippet and need to write JavaScript to select specific elements. That would lock in your DOM selection skills.
+
+Do you want me to prepare those exercises?

@@ -1,0 +1,134 @@
+Absolutely! Let’s dive deep into **radio buttons** in HTML forms and how to work with them in JavaScript.
+
+---
+
+## **Radio Buttons**
+
+**Purpose:**
+Radio buttons let users select **one option from a set**. Only **one radio button in a group can be selected** at a time.
+
+---
+
+### **1. HTML Structure**
+
+```html
+<form id="genderForm">
+  <label>
+    <input type="radio" name="gender" value="Male"> Male
+  </label>
+  <label>
+    <input type="radio" name="gender" value="Female"> Female
+  </label>
+  <label>
+    <input type="radio" name="gender" value="Other"> Other
+  </label>
+  <button type="submit">Submit</button>
+</form>
+```
+
+**Key points:**
+
+* All radio buttons in the same **group must share the same `name`**.
+* Each radio button should have a **`value`** to know which option is selected.
+
+---
+
+### **2. Accessing Selected Radio Button in JavaScript**
+
+```javascript
+const form = document.getElementById("genderForm");
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const selectedGender = document.querySelector('input[name="gender"]:checked');
+
+  if (selectedGender) {
+    alert("Selected Gender: " + selectedGender.value);
+  } else {
+    alert("Please select a gender.");
+  }
+});
+```
+
+**Explanation:**
+
+* `document.querySelector('input[name="gender"]:checked')`
+
+  * Finds **the radio button in the group that is currently selected**.
+* `.value` gives the **selected option**.
+* If no button is selected, `selectedGender` will be `null`.
+
+---
+
+### **3. Checking Radio Button Programmatically**
+
+```javascript
+const maleRadio = document.querySelector('input[name="gender"][value="Male"]');
+
+// Check the radio button
+maleRadio.checked = true;
+
+// Uncheck it
+maleRadio.checked = false;
+```
+
+---
+
+### **4. Listening to Change Event**
+
+You can listen for changes as the user selects a radio button:
+
+```javascript
+const radios = document.querySelectorAll('input[name="gender"]');
+
+radios.forEach(radio => {
+  radio.addEventListener("change", (e) => {
+    console.log("You selected: " + e.target.value);
+  });
+});
+```
+
+**Benefit:**
+
+* Useful for **real-time updates** without submitting the form.
+
+---
+
+### **5. Example: Live Radio Selection Display**
+
+```html
+<p>Selected Gender: <span id="selectedGender">None</span></p>
+
+<script>
+const selectedGenderSpan = document.getElementById("selectedGender");
+const radios = document.querySelectorAll('input[name="gender"]');
+
+radios.forEach(radio => {
+  radio.addEventListener("change", (e) => {
+    selectedGenderSpan.textContent = e.target.value;
+  });
+});
+</script>
+```
+
+**Explanation:**
+
+* Displays the selected gender **immediately as the user clicks**.
+* No need to submit the form to see the selection.
+
+---
+
+### ✅ **Key Takeaways**
+
+1. **Radio buttons in a group share the same `name`**.
+2. Only **one radio button can be selected** in a group at a time.
+3. Use **`:checked`** in JavaScript to find the selected option.
+4. Use **`change` event** for real-time interaction.
+5. Can be checked programmatically using `.checked = true/false`.
+
+---
+
+If you want, I can create a **full form demo with radio buttons, checkboxes, text input, and validation**, so you can practice **all user input types together** interactively.
+
+Do you want me to create that demo?

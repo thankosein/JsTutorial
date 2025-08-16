@@ -1,0 +1,140 @@
+Alright — let’s go through **Choice Inputs** in detail.
+
+These are inputs where the user **selects from predefined options** rather than typing free text.
+The main types are:
+
+---
+
+## **1. Radio Buttons** (Choose ONE option from a group)
+
+* Same `name` → Only one can be selected at a time.
+* Use `.checked` to see if it’s selected.
+
+**Example:**
+
+```html
+<h3>Radio Button Example</h3>
+<form id="colorForm">
+  <label><input type="radio" name="color" value="Red"> Red</label>
+  <label><input type="radio" name="color" value="Green"> Green</label>
+  <label><input type="radio" name="color" value="Blue"> Blue</label>
+  <button type="submit">Submit</button>
+</form>
+
+<script>
+document.getElementById("colorForm").addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const selected = document.querySelector('input[name="color"]:checked');
+  if (selected) {
+    alert(`✅ You selected: ${selected.value}`);
+  } else {
+    alert("❌ Please choose a color.");
+  }
+});
+</script>
+```
+
+💡 **Tip**: `document.querySelector('input[name="color"]:checked')` is the easiest way to get the chosen radio.
+
+---
+
+## **2. Checkboxes** (Choose MULTIPLE options)
+
+* Each checkbox is independent.
+* Use `.checked` to know if it’s ticked.
+
+**Example:**
+
+```html
+<h3>Checkbox Example</h3>
+<form id="foodForm">
+  <label><input type="checkbox" name="food" value="Pizza"> Pizza</label>
+  <label><input type="checkbox" name="food" value="Burger"> Burger</label>
+  <label><input type="checkbox" name="food" value="Pasta"> Pasta</label>
+  <button type="submit">Submit</button>
+</form>
+
+<script>
+document.getElementById("foodForm").addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const checkedItems = Array.from(document.querySelectorAll('input[name="food"]:checked'))
+                            .map(cb => cb.value);
+
+  if (checkedItems.length > 0) {
+    alert(`✅ You selected: ${checkedItems.join(", ")}`);
+  } else {
+    alert("❌ Please choose at least one food item.");
+  }
+});
+</script>
+```
+
+💡 **Tip**: `Array.from()` helps turn the NodeList into an array for `.map()`.
+
+---
+
+## **3. Select Dropdown**
+
+* Can be **single-select** or **multi-select**.
+* Use `.value` for single; `.selectedOptions` for multiple.
+
+**Example (Single Select)**:
+
+```html
+<h3>Select Dropdown Example</h3>
+<form id="countryForm">
+  <select name="country" id="country" required>
+    <option value="">-- Select a Country --</option>
+    <option value="SG">Singapore</option>
+    <option value="MY">Malaysia</option>
+    <option value="TH">Thailand</option>
+  </select>
+  <button type="submit">Submit</button>
+</form>
+
+<script>
+document.getElementById("countryForm").addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const country = document.getElementById("country").value;
+  if (country) {
+    alert(`✅ Selected country: ${country}`);
+  } else {
+    alert("❌ Please select a country.");
+  }
+});
+</script>
+```
+
+**Example (Multi Select)**:
+
+```html
+<select name="hobbies" id="hobbies" multiple>
+  <option value="Reading">Reading</option>
+  <option value="Sports">Sports</option>
+  <option value="Music">Music</option>
+</select>
+
+<script>
+const selectedHobbies = Array.from(document.getElementById("hobbies").selectedOptions)
+                             .map(opt => opt.value);
+console.log(selectedHobbies);
+</script>
+```
+
+---
+
+✅ **Key Notes for Choice Inputs**
+
+1. **Radio** → Only one selection per `name` group.
+2. **Checkbox** → Multiple selections possible.
+3. **Select** → Can be single or multiple depending on `multiple` attribute.
+4. Always validate in JavaScript even if HTML attributes enforce rules.
+5. Use `.checked` for booleans, `.value` for strings, and `.selectedOptions` for multiple.
+
+---
+
+If you want, I can prepare **4. Date & Time Inputs** next so the form input section is complete in sequence.
+Do you want me to continue with that?

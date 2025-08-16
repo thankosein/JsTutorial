@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Changing Text Example</title>
+</head>
+<body>
+  <h1 id="page-title">Original Title</h1>
+  <p id="description">This is the original paragraph text.</p>
+
+  <button id="btn-textContent">Change (textContent)</button>
+  <button id="btn-innerText">Change (innerText)</button>
+  <button id="btn-innerHTML">Change (innerHTML)</button>
+
+  <script>
+    // Cache selectors
+    const title = document.getElementById("page-title");
+    const description = document.getElementById("description");
+
+    // textContent example
+    document.getElementById("btn-textContent").addEventListener("click", () => {
+      title.textContent = "Updated using textContent";
+      description.textContent = "This text ignores hidden styling and just updates raw text.";
+    });
+
+    // innerText example
+    document.getElementById("btn-innerText").addEventListener("click", () => {
+      title.innerText = "Updated using innerText";
+      description.innerText = "This text considers CSS visibility.";
+    });
+
+    // innerHTML example
+    document.getElementById("btn-innerHTML").addEventListener("click", () => {
+      title.innerHTML = "<em>Updated using innerHTML</em>";
+      description.innerHTML = "You can insert <strong>HTML tags</strong> with innerHTML.";
+    });
+  </script>
+</body>
+</html>

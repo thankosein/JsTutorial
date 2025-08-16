@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Click & Input Event Example</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    input { padding: 5px; font-size: 1rem; }
+    button { padding: 5px 10px; font-size: 1rem; margin-left: 5px; }
+    p { margin-top: 10px; font-size: 1.2rem; }
+  </style>
+</head>
+<body>
+  <h1>Greeting App</h1>
+
+  <input type="text" id="nameInput" placeholder="Type your name" />
+  <button id="btnGreet">Greet Me</button>
+  <p id="greeting">Hello!</p>
+
+  <script>
+    const input = document.getElementById("nameInput");
+    const greeting = document.getElementById("greeting");
+    const btn = document.getElementById("btnGreet");
+
+    // Event on input: updates greeting live as user types
+    input.addEventListener("input", (e) => {
+      const name = e.target.value.trim();
+      greeting.textContent = name ? `Hello, ${name}!` : "Hello!";
+    });
+
+    // Event on button: alerts greeting
+    btn.addEventListener("click", () => {
+      const name = input.value.trim();
+      if(name === "") {
+        alert("Please type your name first!");
+      } else {
+        alert(`Welcome, ${name}!`);
+      }
+    });
+  </script>
+</body>
+</html>

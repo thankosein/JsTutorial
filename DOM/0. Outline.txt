@@ -1,0 +1,162 @@
+Here’s a structured JavaScript DOM (Document Object Model) course outline you can follow to study progressively — starting from the basics and moving to advanced topics with practical projects along the way.
+
+---
+
+## JavaScript DOM Course Outline
+
+1. Introduction to the DOM
+
+* What is the DOM?
+* How browsers create the DOM from HTML
+* DOM tree structure (Document → Element → Node)
+* Differences between DOM, HTML, and CSSOM
+
+---
+
+2. Accessing DOM Elements
+
+* `document.getElementById()`
+* `document.getElementsByClassName()`
+* `document.getElementsByTagName()`
+* `document.querySelector()` and `document.querySelectorAll()`
+* Understanding NodeList vs HTMLCollection
+* Traversing the DOM:
+
+  * `parentNode` / `parentElement`
+  * `children` / `childNodes`
+  * `firstElementChild` / `lastElementChild`
+  * `nextElementSibling` / `previousElementSibling`
+
+---
+
+3. Manipulating Elements
+
+* Changing text: `innerText`, `textContent`, `innerHTML`
+* Changing attributes: `getAttribute()`, `setAttribute()`, `removeAttribute()`
+* Changing styles: `style.property`, `className`, `classList.add/remove/toggle/contains`
+* Creating new elements: `document.createElement()`, `appendChild()`, `prepend()`
+* Removing elements: `remove()`, `removeChild()`
+* Cloning elements: `cloneNode()`
+
+---
+
+4. Event Handling
+
+* Understanding events and event types
+* Adding event listeners: `addEventListener()`
+* Removing event listeners: `removeEventListener()`
+* Event object: `event.target`, `event.type`, `event.preventDefault()`
+* Mouse events: `click`, `dblclick`, `mouseover`, `mouseout`
+* Keyboard events: `keydown`, `keyup`, `keypress`
+* Form events: `submit`, `change`, `input`, `focus`, `blur`
+* Event bubbling and capturing
+* Event delegation pattern
+
+---
+
+5. Forms & User Input
+
+* Selecting form fields
+* Getting and setting values
+* Validating inputs
+* Preventing default form submission
+* Creating dynamic forms
+
+---
+
+6. Working with CSS via DOM
+
+* Adding/removing CSS classes dynamically
+* Reading and modifying inline styles
+* Working with `getComputedStyle()`
+* Animations with JavaScript
+
+---
+
+7. DOM Properties & Attributes
+
+* `dataset` (data-\* attributes)
+* Boolean attributes (`checked`, `disabled`, etc.)
+* Difference between `.value` and `.getAttribute('value')`
+
+---
+
+8. Document & Window Objects
+
+* `document.title`
+* `document.URL`
+* `document.body`
+* `window.innerWidth`, `window.innerHeight`
+* `window.scrollX`, `window.scrollY`
+* `window.location`, `window.history`
+
+---
+
+9. DOM Traversal & Search
+
+* `.closest()`
+* `.matches()`
+* Tree walking using `parentNode`, `childNodes`
+* Filtering elements with JavaScript
+
+---
+
+10. Advanced DOM Manipulation
+
+* Templates (`<template>` tag)
+* Fragment (`DocumentFragment`) for performance
+* Using `insertAdjacentHTML()`
+* Building dynamic lists from arrays
+* Virtual DOM concept (intro, not React-specific)
+
+---
+
+11. Timers & Animation
+
+* `setTimeout()` and `setInterval()`
+* Creating custom animations
+* Using `requestAnimationFrame()`
+* Scroll animations
+
+---
+
+12. Working with Media & DOM
+
+* Selecting and controlling images, videos, audio
+* Handling `load` and `error` events
+* Lazy loading images
+
+---
+
+13. Best Practices
+
+* Keeping DOM manipulation minimal
+* Avoiding excessive reflows/repaints
+* Separating JavaScript from HTML (unobtrusive JS)
+* Caching DOM queries
+
+---
+
+14. Mini Projects (Hands-On)
+
+* Beginner:
+
+  * Color changer
+  * Counter app
+  * Show/hide password
+* Intermediate:
+
+  * To-do list
+  * Image slider
+  * Form validation
+* Advanced:
+
+  * Drag and drop items
+  * Infinite scroll content loader
+  * Dynamic table filtering
+
+---
+
+If you want, I can also make you a visual mind map of this DOM course so you can follow it as a learning path step-by-step instead of just a list. That way, you’ll know exactly which order to study in.
+
+Do you want me to prepare that mind map next?

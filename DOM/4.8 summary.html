@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Interactive Fruit List</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    ul { list-style-type: none; padding: 0; }
+    li {
+      padding: 5px 10px;
+      background: #f4f4f4;
+      margin: 5px 0;
+      border-radius: 4px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    button {
+      margin-left: 5px;
+      padding: 2px 6px;
+      border-radius: 3px;
+      border: none;
+      cursor: pointer;
+    }
+    .remove-btn { background: red; color: white; }
+    .clone-btn { background: green; color: white; }
+  </style>
+</head>
+<body>
+  <h1>Interactive Fruit List</h1>
+
+  <input type="text" id="fruitInput" placeholder="Enter a fruit name" />
+  <button id="addFruit">Add Fruit</button>
+
+  <ul id="fruits">
+    <li>
+      Apple
+      <span>
+        <button class="remove-btn">Remove</button>
+        <button class="clone-btn">Clone</button>
+      </span>
+    </li>
+    <li>
+      Banana
+      <span>
+        <button class="remove-btn">Remove</button>
+        <button class="clone-btn">Clone</button>
+      </span>
+    </li>
+  </ul>
+
+  <script>
+    const fruitsList = document.getElementById("fruits");
+    const fruitInput = document.getElementById("fruitInput");
+    const addButton = document.getElementById("addFruit");
+
+    // Helper function to create a fruit <li> with buttons
+    function createFruitItem(name) {
+      const li = document.createElement("li");
+      li.textContent = name + " ";
+
+      const span = document.createElement("span");
+
+      const removeBtn = document.createElement("button");
+      removeBtn.textContent = "Remove";
+      removeBtn.classList.add("remove-btn");
+
+      const cloneBtn = document.createElement("button");
+      cloneBtn.textContent = "Clone";
+      cloneBtn.classList.add("clone-btn");
+
+      span.appendChild(removeBtn);
+      span.appendChild(cloneBtn);
+      li.appendChild(span);
+
+      return li;
+    }
+
+    // Add new fruit
+    addButton.addEventListener("click", () => {
+      const fruitName = fruitInput.value.trim();
+      if(fruitName === "") {
+        alert("Please enter a fruit name.");
+        return;
+      }
+      const newFruit = createFruitItem(fruitName);
+      fruitsList.appendChild(newFruit);
+      fruitInput.value = "";
+      fruitInput.focus();
+    });
+
+    // Event delegation for remove & clone buttons
+    fruitsList.addEventListener("click", (e) => {
+      const li = e.target.closest("li"); // get the parent <li>
+
+      if (e.target.classList.contains("remove-btn")) {
+        li.remove();
+      }
+
+      if (e.target.classList.contains("clone-btn")) {
+        const clone = li.cloneNode(true); // deep clone
+        fruitsList.appendChild(clone);
+      }
+    });
+
+  </script>
+</body>
+</html>

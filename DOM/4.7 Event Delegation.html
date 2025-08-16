@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Event Delegation Example</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    ul { list-style-type: none; padding: 0; }
+    li {
+      padding: 5px 10px;
+      background: #f4f4f4;
+      margin: 5px 0;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Fruit List with Event Delegation</h1>
+
+  <ul id="fruits">
+    <li>Apple</li>
+    <li>Banana</li>
+  </ul>
+
+  <input type="text" id="fruitInput" placeholder="Add a new fruit" />
+  <button id="addFruit">Add Fruit</button>
+
+  <script>
+    const fruitsList = document.getElementById("fruits");
+    const fruitInput = document.getElementById("fruitInput");
+    const addButton = document.getElementById("addFruit");
+
+    // Event delegation: handle clicks on all li items
+    fruitsList.addEventListener("click", (e) => {
+      if (e.target.tagName === "LI") {
+        alert("You clicked on: " + e.target.textContent);
+      }
+    });
+
+    // Add new fruit dynamically
+    addButton.addEventListener("click", () => {
+      const fruitName = fruitInput.value.trim();
+      if (fruitName === "") {
+        alert("Please enter a fruit name.");
+        return;
+      }
+
+      const newLi = document.createElement("li");
+      newLi.textContent = fruitName;
+      fruitsList.appendChild(newLi);
+
+      fruitInput.value = "";
+      fruitInput.focus();
+    });
+  </script>
+</body>
+</html>

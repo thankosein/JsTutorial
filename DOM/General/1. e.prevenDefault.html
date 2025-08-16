@@ -1,0 +1,158 @@
+Great question! `e.preventDefault()` (often written as `event.preventDefault()`) tells the browser **“don’t perform the element’s built-in action for this event.”** You still get the event, and your JS runs—but the browser’s **default behavior is canceled**.
+
+---
+
+## What’s a “default action”?
+
+Examples of built-in behaviors the browser does automatically:
+
+* **Form `submit`** → sends data + reloads/navigates.
+* **Anchor `<a>` click** → navigates to the `href`.
+* **Checkbox click** → toggles checked state.
+* **Right-click** → opens the context menu.
+* **Text input `keydown`** → inserts the typed character.
+* **Drag/scroll/touch** → scrolls the page, drags an element, etc.
+
+`preventDefault()` cancels those *when possible*.
+
+---
+
+## Core usage
+
+```js
+form.addEventListener("submit", (e) => {
+  e.preventDefault();          // stop page reload/navigation
+  // handle via JS (validate, send fetch/AJAX, show message, etc.)
+});
+```
+
+```js
+document.querySelector("a").addEventListener("click", (e) => {
+  e.preventDefault();          // don’t navigate
+  // do SPA routing, smooth scroll, open modal, etc.
+});
+```
+
+---
+
+## Important details & gotchas
+
+### 1) Only works if the event is **cancelable**
+
+Some events cannot be canceled. Check first:
+
+```js
+el.addEventListener("click", (e) => {
+  if (e.cancelable) e.preventDefault();
+});
+```
+
+You can test whether it was canceled with `e.defaultPrevented === true`.
+
+### 2) **Passive listeners** can’t call `preventDefault`
+
+For performance, browsers may treat `touchstart`, `touchmove`, `wheel` as passive by default. To prevent scrolling, opt out:
+
+```js
+window.addEventListener("touchmove", (e) => {
+  e.preventDefault();          // will work
+}, { passive: false });
+```
+
+### 3) `preventDefault()` ≠ `stopPropagation()`
+
+* `preventDefault()` → stops the **browser’s action**.
+* `stopPropagation()` → stops the **event from bubbling** to parents.
+  Often used together but they’re different:
+
+```js
+btn.addEventListener("click", (e) => {
+  e.preventDefault();          // no default action
+  e.stopPropagation();         // don’t bubble to container
+});
+```
+
+### 4) Returning `false` is **not** a replacement (vanilla JS)
+
+In **vanilla `addEventListener`**, `return false;` does nothing. (In jQuery/inline handlers it *used to* mimic both prevent + stop). Prefer explicit:
+
+```js
+e.preventDefault();
+e.stopPropagation();
+```
+
+### 5) Timing matters
+
+Call `preventDefault()` **during** the event handler for that event (before the default runs). Calling it later has no effect.
+
+---
+
+## Practical mini-examples
+
+### A) Custom form submit (AJAX)
+
+```js
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  if (!form.checkValidity()) { form.reportValidity(); return; }
+  const data = new FormData(form);
+  await fetch("/api", { method: "POST", body: data });
+  // Show success without page reload
+});
+```
+
+### B) Single-page routing link
+
+```js
+nav.addEventListener("click", (e) => {
+  const a = e.target.closest("a[href]");
+  if (!a) return;
+  e.preventDefault();
+  history.pushState({}, "", a.href);
+  renderPage(location.pathname);
+});
+```
+
+### C) Prevent typing certain characters
+
+```js
+input.addEventListener("keydown", (e) => {
+  if (e.key === " ") {               // block spaces
+    e.preventDefault();
+  }
+});
+```
+
+### D) Disable context menu
+
+```js
+window.addEventListener("contextmenu", (e) => {
+  e.preventDefault();
+});
+```
+
+### E) Prevent scroll on touch/trackpad in a modal
+
+```js
+modal.addEventListener("wheel", (e) => {
+  e.preventDefault();
+}, { passive: false });
+```
+
+---
+
+## When to use it (and not)
+
+**Use it when** you want control: client-side validation, SPA routing, custom drag/scroll behavior, blocking unwanted keys.
+**Avoid it** if the default behavior is desirable (e.g., normal link navigation, accessible form submission) or if it harms accessibility.
+
+---
+
+## Quick checklist
+
+* Is the event **cancelable**? (`e.cancelable`)
+* Is the listener **non-passive** when needed? (`{ passive: false }`)
+* Do you also need to stop bubbling? (`e.stopPropagation()`)
+* Are you replacing the default behavior with an **equally accessible flow**?
+
+If you’d like, I can wrap these into a tiny HTML page where you can toggle `preventDefault()` on/off to *see* the differences live.

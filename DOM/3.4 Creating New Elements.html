@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Creating New Elements Example</title>
+  <style>
+    body { font-family: Arial, sans-serif; }
+    ul { list-style-type: none; padding: 0; }
+    li { padding: 5px 10px; background: #f4f4f4; margin: 5px 0; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <h1>Fruit List</h1>
+
+  <ul id="fruits">
+    <li>Apple</li> 
+    <li>Banana</li>
+  </ul>
+
+  <input type="text" id="fruit-input" placeholder="Enter a fruit name" />
+  <button id="add-fruit">Add Fruit</button>
+
+  <script>
+    const fruitsList = document.getElementById("fruits");
+    const fruitInput = document.getElementById("fruit-input");
+    const addButton = document.getElementById("add-fruit");
+
+    addButton.addEventListener("click", () => {
+      const fruitName = fruitInput.value.trim();
+
+      if (fruitName === "") {
+        alert("Please enter a fruit name.");
+        return;
+      }
+
+      // Create new li element
+      const newFruit = document.createElement("li");
+      newFruit.textContent = fruitName;
+
+      // Append to the list
+      fruitsList.appendChild(newFruit);
+
+      // Clear the input
+      fruitInput.value = "";
+      fruitInput.focus();
+    });
+  </script>
+</body>
+</html>
+<!-- How It Works
+
+User enters a fruit name in the input box.
+
+Click "Add Fruit" → JavaScript:
+
+Creates a new <li> element.
+
+Sets its textContent to the input value.
+
+Appends it to the <ul> list.
+
+Clears the input and focuses it for quick typing.
+
+Best Practices Shown
+
+createElement() → Creates new DOM elements.
+
+textContent → Safer than innerHTML for text.
+
+appendChild() → Adds the new element at the end of a parent.
+
+Input validation → Prevents adding empty items.
+
+Focus control → Improves user experience.
+
+If you want, I can upgrade this so that each new fruit has a "Remove" button beside it — which would also demonstrate event handling + element removal (ties in with 3.5).
+
+Do you want me to extend it with that feature? -->

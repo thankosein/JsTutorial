@@ -1,0 +1,154 @@
+## **4. Event Handling**
+
+Event handling allows you to **listen for actions** on DOM elements and **run code when they happen**.
+
+---
+
+### **4.1 What is an Event?**
+
+An event is something that happens in the browser, e.g.:
+
+* **User actions**: click, dblclick, keypress, mouseover, submit
+* **Browser actions**: load, resize, scroll, input
+
+---
+
+### **4.2 Adding Event Listeners**
+
+#### **1. Inline Event (not recommended)**
+
+```html
+<button onclick="alert('Clicked!')">Click Me</button>
+```
+
+❌ **Downside**: mixes HTML with JS, hard to maintain.
+
+#### **2. Using DOM Properties**
+
+```javascript
+const btn = document.getElementById("myBtn");
+btn.onclick = () => {
+  alert("Clicked!");
+};
+```
+
+⚠ Only **one function** can be assigned this way. Assigning another will overwrite the first.
+
+#### **3. Using `addEventListener` (recommended)**
+
+```javascript
+const btn = document.getElementById("myBtn");
+
+btn.addEventListener("click", () => {
+  alert("Clicked!");
+});
+```
+
+✅ Can attach **multiple listeners** for the same event.
+✅ Separates HTML and JS — better practice.
+
+---
+
+### **4.3 Event Types**
+
+| Type      | Description               |
+| --------- | ------------------------- |
+| click     | Mouse click on an element |
+| dblclick  | Double click              |
+| mouseover | Mouse enters an element   |
+| mouseout  | Mouse leaves an element   |
+| keydown   | Key pressed down          |
+| keyup     | Key released              |
+| input     | User types in input       |
+| submit    | Form submitted            |
+| change    | Input value changed       |
+| load      | Page or image loaded      |
+
+---
+
+### **4.4 Event Object**
+
+Every event passes an **event object** with useful info:
+
+```javascript
+btn.addEventListener("click", (event) => {
+  console.log(event); // MouseEvent object
+  console.log(event.target); // Element clicked
+});
+```
+
+---
+
+### **4.5 Removing Event Listeners**
+
+```javascript
+function handleClick() {
+  alert("Clicked!");
+}
+
+btn.addEventListener("click", handleClick);
+
+// Remove the listener later
+btn.removeEventListener("click", handleClick);
+```
+
+✅ Only works if you use a **named function**, not an anonymous one.
+
+---
+
+### **4.6 Example: Click & Input Event**
+
+```html
+<input type="text" id="nameInput" placeholder="Type your name" />
+<p id="greeting">Hello!</p>
+<button id="btnGreet">Greet Me</button>
+
+<script>
+const input = document.getElementById("nameInput");
+const greeting = document.getElementById("greeting");
+const btn = document.getElementById("btnGreet");
+
+// Event on input
+input.addEventListener("input", (e) => {
+  greeting.textContent = "Hello, " + e.target.value;
+});
+
+// Event on button
+btn.addEventListener("click", () => {
+  alert("Welcome, " + input.value);
+});
+</script>
+```
+
+---
+
+### **4.7 Event Delegation**
+
+Instead of attaching listeners to every child, attach one listener to a parent:
+
+```javascript
+const list = document.getElementById("fruits");
+
+list.addEventListener("click", (e) => {
+  if (e.target.tagName === "LI") {
+    alert("You clicked: " + e.target.textContent);
+  }
+});
+```
+
+✅ Works for **existing and dynamically added children**.
+
+---
+
+### ✅ **Best Practices**
+
+1. Use **`addEventListener`** instead of inline JS.
+2. Use **named functions** if you might remove the listener later.
+3. Consider **event delegation** for dynamic elements.
+4. Always **inspect the `event` object** to understand what triggered it.
+
+---
+
+I can create a **hands-on interactive example** combining **click, input, and delegation**, so you can practice event handling with the fruit list.
+
+Do you want me to make that interactive example?

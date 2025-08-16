@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Text Input Example</title>
+</head>
+<body>
+
+<h2>Text Input Example</h2>
+
+<form id="myForm">
+  <label for="username">Username:</label>
+  <input type="text" 
+         id="username" 
+         name="username" 
+         placeholder="Enter your name" 
+         maxlength="20" 
+         required>
+  <button type="submit">Submit</button>
+</form>
+
+<p id="message"></p>
+
+<script>
+  const form = document.getElementById("myForm");
+  const usernameInput = document.getElementById("username");
+  const message = document.getElementById("message");
+
+  // Real-time feedback while typing
+  usernameInput.addEventListener("input", () => {
+    message.textContent = `You are typing: ${usernameInput.value}`;
+  });
+
+  // On form submission
+  form.addEventListener("submit", (e) => {
+    e.preventDefault(); // stop form from reloading the page
+
+    const username = usernameInput.value.trim(); // remove extra spaces
+
+    if (username === "") {
+      alert("❌ Username cannot be empty!");
+      return;
+    }
+
+    if (username.length < 3) {
+      alert("⚠ Username must be at least 3 characters.");
+      return;
+    }
+
+    alert(`✅ Submitted username: ${username}`);
+  });
+</script>
+
+</body>
+</html>
