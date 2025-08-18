@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Button Examples</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+
+    .icon-btn {
+      width: 40px;
+      height: 40px;
+      background: url('https://cdn-icons-png.flaticon.com/512/1828/1828778.png') no-repeat center/contain;
+      border: none;
+      cursor: pointer;
+    }
+
+    button {
+      margin: 10px;
+      padding: 8px 12px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🔘 Button Examples</h2>
+
+  <!-- 1. Normal Button -->
+  <button type="button">Click Me</button>
+
+  <!-- 2. Submit Button -->
+  <form>
+    <input type="text" placeholder="Your name">
+    <button type="submit">Submit</button>
+  </form>
+
+  <!-- 3. Input type="image" -->
+  <form>
+    <input type="text" placeholder="Username">
+    <input type="image" src="https://cdn-icons-png.flaticon.com/512/1828/1828925.png" alt="Submit" width="40">
+  </form>
+
+  <!-- 4. Button with image inside -->
+  <button type="button">
+    <img src="https://cdn-icons-png.flaticon.com/512/1828/1828843.png" alt="Send" width="20"> Send
+  </button>
+
+  <!-- 5. CSS background image button -->
+  <button type="button" class="icon-btn" title="Settings"></button>
+
+  <!-- 6. Font Awesome Icon Button -->
+  <button type="button">
+    <i class="fa fa-trash"></i> Delete
+  </button>
+
+  <!-- 7. SVG Icon Button -->
+  <button type="button">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" viewBox="0 0 16 16">
+      <path d="M5.5 5.5v7h1v-7h-1zM9.5 5.5v7h1v-7h-1z"/>
+      <path fill-rule="evenodd" d="M14.5 3a1 1 0 01-1-1V1h-11v1a1 1 0 01-1 1H1v1h14V3h-0.5z"/>
+    </svg>
+    Delete
+  </button>
+</body>
+</html>

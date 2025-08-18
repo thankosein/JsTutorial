@@ -1,0 +1,108 @@
+Great 👍 Let’s dive into **Buttons** in HTML forms & general use.
+
+---
+
+## 🔘 **6. Buttons in HTML**
+
+HTML provides different ways to create buttons.
+They are mostly created with the `<button>` element or `<input type="button">`, but their **behavior** depends on the `type` attribute.
+
+---
+
+### ✅ **Types of Buttons**
+
+1. **`<button type="submit">`**
+
+   * Default type if not specified.
+   * Submits the form it belongs to.
+   * Example:
+
+     ```html
+     <form>
+       <button type="submit">Submit Form</button>
+     </form>
+     ```
+
+---
+
+2. **`<button type="reset">`**
+
+   * Resets all form inputs to their **default values**.
+   * Example:
+
+     ```html
+     <form>
+       <input type="text" placeholder="Type something">
+       <button type="reset">Reset</button>
+     </form>
+     ```
+
+---
+
+3. **`<button type="button">`**
+
+   * Does **nothing by default**.
+   * Used with JavaScript to perform custom actions.
+   * Example:
+
+     ```html
+     <button type="button" onclick="alert('Hello!')">Click Me</button>
+     ```
+
+---
+
+4. **`<input type="submit">`**
+
+   * Same as `<button type="submit">`, but written as `<input>`.
+   * Example:
+
+     ```html
+     <form>
+       <input type="submit" value="Submit Form">
+     </form>
+     ```
+
+---
+
+5. **`<input type="reset">`**
+
+   * Same as `<button type="reset">`.
+   * Example:
+
+     ```html
+     <form>
+       <input type="text" placeholder="Enter name">
+       <input type="reset" value="Clear">
+     </form>
+     ```
+
+---
+
+6. **`<input type="button">`**
+
+   * Like `<button type="button">`, needs JavaScript to do anything.
+   * Example:
+
+     ```html
+     <input type="button" value="Say Hi" onclick="alert('Hi there!')">
+     ```
+
+---
+
+### ✅ **When to Use What**
+
+* **Submit button** → To send form data.
+* **Reset button** → To quickly clear/reset a form.
+* **Button type="button"** → To handle actions in **JavaScript** (e.g., open modal, calculate something, etc.).
+
+---
+
+⚡ **Key Takeaways**
+
+1. If you don’t specify `type`, `<button>` defaults to `"submit"`.
+2. Use `"button"` type if you only want to run JavaScript, not submit forms.
+3. Prefer `<button>` over `<input type="button">` because it allows **HTML content** inside (icons, bold text, etc.).
+
+---
+
+👉 Would you like me to create a **single HTML demo page** showing **all button types** in action (submit, reset, button) with form + JavaScript?
