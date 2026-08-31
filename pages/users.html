@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management - tks Architecture</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .toast-enter { transform: translateX(100%); opacity: 0; }
+        .toast-show { transform: translateX(0); opacity: 1; transition: all 0.3s ease-out; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased p-6" data-page="users">
+
+    <div id="header-slot"></div>
+
+    <main class="space-y-6 max-w-7xl mx-auto">
+        <!-- Showcase Triggers -->
+        <section class="bg-white p-4 rounded-xl border flex gap-3">
+            <button id="demo-btn-modal" class="bg-indigo-600 text-white text-xs px-3 py-2 rounded-lg">Open Modal</button>
+            <button id="demo-btn-toast-success" class="bg-emerald-600 text-white text-xs px-3 py-2 rounded-lg">Toast Success</button>
+        </section>
+
+        <!-- User Management Feature Only -->
+        <section class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div id="user-form-feature" class="bg-white p-4 rounded-xl border">
+                <h3 class="font-bold text-sm mb-3">Add User</h3>
+                <form id="form-user" class="space-y-3">
+                    <input type="text" name="name" placeholder="Full Name" required class="w-full text-xs p-2 border rounded">
+                    <select name="role" required class="w-full text-xs p-2 border rounded">
+                        <option value="Frontend Developer">Frontend Developer</option>
+                        <option value="UI/UX Designer">UI/UX Designer</option>
+                    </select>
+                    <input type="hidden" name="status" value="Full-Time">
+                    <button type="submit" class="w-full bg-slate-900 text-white text-xs py-2 rounded">Submit</button>
+                </form>
+            </div>
+
+            <div id="user-grid-feature" class="lg:col-span-2 bg-white p-4 rounded-xl border">
+                <input type="text" id="grid-search-input" placeholder="Search grid..." class="text-xs p-1.5 border rounded mb-3 w-48">
+                <div id="data-grid-container"></div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-slot"></div>
+    <div id="global-toast-slot" class="fixed bottom-5 right-5 z-50 flex flex-col space-y-2 pointer-events-none"></div>
+    <div id="global-modal-slot"></div>
+
+    <script type="module" src="./user.js"></script>
+</body>
+</html>

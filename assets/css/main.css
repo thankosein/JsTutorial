@@ -1,0 +1,24 @@
+/* assets/css/main.css */
+@import './common/reset.css';
+@import './common/variables.css';
+@import './common/components.css';
+@import './common/utilities.css';
+
+/* Minimal Base & Reset */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: system-ui, sans-serif; background: #f4f6f9; color: #333; line-height: 1.5; }
+
+/* Utilities */
+.container { max-width: 1000px; margin: 20px auto; padding: 0 15px; }
+.flex { display: flex; gap: 10px; align-items: center; }
+.hidden { display: none !important; }
+
+/* Components */
+.btn { padding: 8px 16px; border: none; border-radius: 4px; background: #007bff; color: #fff; cursor: pointer; }
+.btn-danger { background: #dc3545; }
+.card { background: #fff; padding: 20px; border-radius: 6px; border: 1px solid #ddd; margin-bottom: 15px; }
+input { padding: 8px; border: 1px solid #ccc; border-radius: 4px; }
+
+/* Toast Notification */
+#global-toast-slot { position: fixed; bottom: 20px; right: 20px; z-index: 999; }
+.toast { background: #333; color: #fff; padding: 10px 15px; border-radius: 4px; margin-top: 5px; }

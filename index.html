@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tks Enterprise System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./config.js"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased p-6">
+
+    <header class="bg-white border-b p-4 mb-6 flex justify-between items-center rounded-xl shadow-sm">
+        <div class="flex items-center space-x-6">
+            <h1 class="font-bold text-lg text-slate-900">tks Enterprise System</h1>
+            
+            <!-- Router မှ Auto Render လုပ်ပေးမည့် Nav Bar -->
+            <nav id="main-nav" class="flex space-x-4 text-xs font-semibold"></nav>
+        </div>
+
+        <div class="relative bg-slate-100 p-2 rounded-full cursor-pointer">
+            🛒 <span id="cart-count-badge" class="bg-indigo-600 text-white text-xs font-bold rounded-full px-2 py-0.5">0</span>
+        </div>
+    </header>
+
+    <!-- Content Area -->
+    <main id="app-content" class="min-h-[500px]"></main>
+
+    <footer class="mt-12 py-6 border-t border-slate-200 text-center text-xs text-slate-500">
+        <p>&copy; 2026 tks Architecture. Built with Native Vanilla JS Modules.</p>
+    </footer>
+
+    <script type="module" src="./assets/js/router.js"></script>
+</body>
+</html>
