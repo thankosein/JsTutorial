@@ -1,43 +1,50 @@
+# Lightweight Modular Vanilla JavaScript Architecture
+
+A scalable, high-performance, and framework-less architecture built entirely with Vanilla JavaScript (ES6+), designed for lightweight web applications, dashboards, and enterprise intranet systems without the heavy overhead of modern frontend frameworks.
+
+---
+
+## 📁 Project Directory Structure
+
+```text
 my-app/
 ├── assets/
 │   ├── css/
-│   │   ├── common/                <-- Global UI Styles (Page တိုင်းမှာ ပါမည့် CSS)
-│   │   │   ├── reset.css          // Browser Default Margin/Padding ဖျက်ရန်
-│   │   │   ├── variables.css      // Root Colors, Fonts, Spacing များ
-│   │   │   ├── components.css     // Modal, Buttons, Toast, Card Layouts
-│   │   │   └── utilities.css      // Flex, Grid, Spacing Helper Classes
-│   │   ├── features/              <-- Page သီးသန့် CSS များ
+│   │   ├── common/                <-- Global UI Styles (Applied across all pages)
+│   │   │   ├── reset.css          // Resets browser default margins/paddings
+│   │   │   ├── variables.css      // Root variables (Colors, Fonts, Spacing)
+│   │   │   ├── components.css     // Reusable UI styles (Modal, Buttons, Toast, Cards)
+│   │   │   └── utilities.css      // Flex, Grid, and Spacing helper classes
+│   │   ├── features/              <-- Page-Specific Styles
 │   │   │   ├── user.css
 │   │   │   └── dashboard.css
-│   │   └── main.css               // Global CSS Entry Point (Imports all common styles)
+│   │   └── main.css               // Global CSS Entry Point
 │   │
 │   ├── js/
-│   │   ├── core/                  <-- Core Engine (Framework-less SDK)
-│   │   │   ├── app.core.js        // Event Bus & Delegation Helper
-│   │   │   ├── app.api.js         // Native Fetch API Wrapper
-│   │   │   ├── app.state.js       // Simple Reactive State Manager
-│   │   │   └── app.ui.js          // Global UI Components (Modal, Toast Loader Manager)
+│   │   ├── core/                  <-- Framework-less Core SDK Engine
+│   │   │   ├── app.core.js        // Event Bus & DOM Delegation Helpers
+│   │   │   ├── app.api.js         // Native Fetch API Wrapper Service
+│   │   │   ├── app.state.js       // Lightweight Reactive State Manager
+│   │   │   └── app.ui.js          // Global UI Manager (Modal, Toast, Loader)
 │   │   │
-│   │   ├── components/            <-- Reusable UI Logic (Vanilla Web Components/Modules)
+│   │   ├── components/            <-- Reusable UI Web Components & Modules
 │   │   │   ├── navbar.js
 │   │   │   └── sidebar.js
 │   │   │
-│   │   ├── features/              <-- Page-Specific Business Logic (Modules)
+│   │   ├── features/              <-- Page-Specific Business Logic Modules
 │   │   │   ├── user-feature.js
 │   │   │   └── dashboard-feature.js
 │   │   │
-│   │   └── main.js                // Global Entry Point Script
+│   │   └── main.js                // Global JavaScript Entry Point
 │   │
-│   └── images/                    <-- Static Assets
-│       ├── icons/
-│       └── logo.svg
+│   └── images/                    <-- Static Assets (Icons, SVGs, Logos)
 │
-├── components/                    <-- Common Server HTML partials (Server Side Include သုံးလျှင်)
+├── components/                    <-- Server-Side HTML Partials (SSI templates)
 │   ├── header.html
 │   └── footer.html
 │
-├── pages/                         <-- Sub Pages
+├── pages/                         <-- Sub-Pages / Views
 │   ├── users.html
 │   └── dashboard.html
 │
-└── index.html                     <-- Main HTML Entry Point
+└── index.html                     <-- Main HTML Entry Point / SPA Shell
